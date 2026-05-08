@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/Core/">
+    <Project Path="src/Core/DerivativesCalculator.Core.csproj" />
+  </Folder>
+  <Folder Name="/src/Differentiation/">
+    <Project Path="src/Differentiation/DerivativesCalculator.Differentiation.csproj" />
+  </Folder>
+  <Folder Name="/src/WebApi/">
+    <Project Path="src/WebApi/DerivativesCalculator.WebApi.csproj" />
+  </Folder>
+  <Folder Name="/tests/" />
+  <Folder Name="/tests/UnitTests/">
+    <Project Path="tests/UnitTests/DerivativesCalculator.UnitTests.csproj" />
+  </Folder>
+</Solution>
