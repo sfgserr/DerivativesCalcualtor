@@ -39,7 +39,7 @@ public class DifferentiateVisitor : IExpressionNodeVisitor<ExpressionNode>
 
     public ExpressionNode Visit(FunctionNode node)
     {
-        var derivative = DifferentiateFunction(node);
+        var derivative = node.Function.Differentiate(node.Body);
 
         var result = (node.Body.Accept(this) * derivative).Accept(_simplificationService);
 
@@ -47,14 +47,4 @@ public class DifferentiateVisitor : IExpressionNodeVisitor<ExpressionNode>
 
         return result;
     }
-
-    private ExpressionNode DifferentiateFunction(FunctionNode node) => node.Function switch
-    {
-        "exp" => node,
-        "cos" => new ConstantNode(-1) * new FunctionNode("sin", node.Body),
-        "sin" => new FunctionNode("cos", node.Body),
-        "ln" => new ConstantNode(1) / node.Body,
-        "tan" => new ConstantNode(1) / (new FunctionNode("cos", node.Body) ^ new ConstantNode(2)),
-        _ => throw new NotImplementedException()
-    };
 }
