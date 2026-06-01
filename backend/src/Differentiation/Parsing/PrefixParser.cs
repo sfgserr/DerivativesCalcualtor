@@ -1,32 +1,14 @@
 using System.Text;
-using System.Globalization; 
+using System.Globalization;
 using DerivativesCalculator.Differentiation.ExpressionNodes;
 using DerivativesCalculator.Differentiation.BinaryOperations;
+using DerivativesCalculator.Differentiation.Functions;
 using DerivativesCalculator.Differentiation.Parsing.Exceptions;
 
 namespace DerivativesCalculator.Differentiation.Parsing;
 
 public static class PrefixParser
 {
-    private static readonly string[] _operators = [
-        "+",
-        "-",
-        "*",
-        "/",
-        "^",
-    ];
-
-    private static readonly string[] _functions = [
-        "exp",
-        "sin",
-        "cos",
-        "ln",
-        "tan"
-    ];
-
-    private static readonly HashSet<string> _operatorSet = new(_operators);
-    private static readonly HashSet<string> _functionSet = new(_functions);
-
     public static ExpressionNode Parse(string input)
     {
         int current = 0;
@@ -40,7 +22,7 @@ public static class PrefixParser
             string token = builder.ToString();
             builder.Clear();
 
-            if (_operatorSet.Contains(token) || _functionSet.Contains(token))
+            if (BinaryOperationFactory.Contains(token) || FunctionRegistry.Contains(token))
             {
                 operators.Push(token);
             }
@@ -68,7 +50,7 @@ public static class PrefixParser
                 case ')':
                     FlushToken();
                     string op = operators.Pop();
-                    if (_operatorSet.Contains(op))
+                    if (BinaryOperationFactory.Contains(op))
                     {
                         var right = builtNodes.Pop();
                         var left = builtNodes.Pop();
@@ -77,7 +59,7 @@ public static class PrefixParser
                     }
                     else
                     {
-                        builtNodes.Push(new FunctionNode(op, builtNodes.Pop()));
+                        builtNodes.Push(new FunctionNode(FunctionRegistry.GetFunction(op)!, builtNodes.Pop()));
                     }
                     break;
                 default:

@@ -4,7 +4,7 @@ namespace DerivativesCalculator.Differentiation.BinaryOperations;
 
 public static class BinaryOperationFactory
 {
-    private static readonly Dictionary<string, IBinaryOperation> _operations = new()
+    private static readonly Dictionary<string, IBinaryOperation> Operations = new()
     {
         ["+"] = new Addition(),
         ["-"] = new Subtraction(),
@@ -15,7 +15,7 @@ public static class BinaryOperationFactory
 
     public static ExpressionNode Evaluate(string op, ExpressionNode left, ExpressionNode right)
     {
-        if (_operations.TryGetValue(op, out var operation))
+        if (Operations.TryGetValue(op, out var operation))
         {
             return operation.Evaluate(left, right);
         }
@@ -25,6 +25,11 @@ public static class BinaryOperationFactory
 
     public static IBinaryOperation Get(string op)
     {
-        return _operations.TryGetValue(op, out var operation) ? operation : throw new ArgumentException();
+        return Operations.TryGetValue(op, out var operation) ? operation : throw new ArgumentException();
+    }
+
+    public static bool Contains(string name)
+    {
+        return Operations.TryGetValue(name, out _);
     }
 }

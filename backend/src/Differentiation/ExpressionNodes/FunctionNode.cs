@@ -1,10 +1,11 @@
 using DerivativesCalculator.Differentiation.ExpressionNodeVisitors;
+using DerivativesCalculator.Differentiation.Functions;
 
 namespace DerivativesCalculator.Differentiation.ExpressionNodes;
 
 public class FunctionNode : ExpressionNode
 {
-    public FunctionNode(string function, ExpressionNode body)
+    public FunctionNode(IFunction function, ExpressionNode body)
     {
         Function = function;
         Body = body;
@@ -12,7 +13,7 @@ public class FunctionNode : ExpressionNode
 
     public override ExpressionType Type => ExpressionType.Function;
 
-    public string Function { get; }
+    public IFunction Function { get; }
 
     public ExpressionNode Body { get; }
 
