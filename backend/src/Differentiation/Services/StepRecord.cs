@@ -1,11 +1,4 @@
-namespace DerivativesCalculator.Core.Contracts;
-
-public interface IDifferentiateService
-{
-    string Differentiate(string expression);
-
-    IReadOnlyCollection<StepRecord> GetStepRecords();
-}
+namespace DerivativesCalculator.Differentiation.Services;
 
 public class StepRecord
 {

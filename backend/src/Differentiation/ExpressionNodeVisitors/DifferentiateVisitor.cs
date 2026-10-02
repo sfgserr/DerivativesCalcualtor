@@ -1,5 +1,5 @@
 using DerivativesCalculator.Differentiation.ExpressionNodes;
-using DerivativesCalculator.Core.Contracts;
+using DerivativesCalculator.Differentiation.Services;
 
 namespace DerivativesCalculator.Differentiation.ExpressionNodeVisitors;
 

@@ -1,5 +1,6 @@
 using DerivativesCalculator.Differentiation.ExpressionNodes;
 using DerivativesCalculator.Differentiation.Extensions;
+using DerivativesCalculator.Differentiation.Functions;
 using DerivativesCalculator.Differentiation.Utils; 
 
 namespace DerivativesCalculator.Differentiation.BinaryOperations;
@@ -18,7 +19,7 @@ public class Pow : IBinaryOperation
         ExpressionNode aDiff,
         ExpressionNode bDiff)
     {
-        return (a ^ b) * (bDiff * new FunctionNode("ln", a) + b * (aDiff / a));
+        return (a ^ b) * (bDiff * new FunctionNode(FunctionRegistry.GetFunction("ln")!, a) + b * (aDiff / a));
     }
 
     public ExpressionNode Evaluate(ExpressionNode a, ExpressionNode b)

@@ -16,6 +16,5 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Differentiation\DerivativesCalculator.Differentiation.csproj" />
-    <ProjectReference Include="..\..\src\Parsing\DerivativesCalculator.Parsing.csproj" />
   </ItemGroup>
 </Project>

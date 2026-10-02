@@ -22,7 +22,7 @@ public class FunctionNode : ExpressionNode
 
     public override string ToString()
     {
-        return $"({Function} {Body.ToString()})";
+        return $"({Function.Name} {Body.ToString()})";
     }
 
     public override bool Equals(object obj)

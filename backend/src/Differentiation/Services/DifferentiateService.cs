@@ -1,4 +1,3 @@
-using DerivativesCalculator.Core.Contracts;
 using DerivativesCalculator.Differentiation.ExpressionNodeVisitors;
 using DerivativesCalculator.Differentiation.Parsing;
 
